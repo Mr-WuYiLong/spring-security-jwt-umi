@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -33,6 +34,7 @@ public class UserController {
     public Response<User> addUser(@RequestBody UserDto userDto) {
         User user = new User();
         BeanUtils.copyProperties(userDto,user);
+        user.setPassword(BCrypt.hashpw(userDto.getPassword(),BCrypt.gensalt()));
         User save = userDao.save(user);
         return new Response(200,"操作成功",save);
     }

@@ -22,8 +22,8 @@ public class UserDaoTest {
     @Test
     public void addUser() {
         User user = new User();
-        user.setUsername("admin");
-        user.setPassword("123456");
+        user.setUsername("张三");
+        user.setPassword("$2a$10$ygz7WdNqTVmmIQxPZMTrBOIi5gOZjDsWe7AX3GMeCAMwXxoyRvTgm");
         user.setStatus(true);
         User save = userDao.save(user);
         System.out.println(save);

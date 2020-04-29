@@ -9,6 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 @SpringBootTest
 class SpringbootJwtApplicationTests {
 
+    /**
+     * 设置密码
+     */
     @Test
     void contextLoads() {
         String gensalt = BCrypt.hashpw("123456",BCrypt.gensalt());
